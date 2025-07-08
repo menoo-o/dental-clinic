@@ -3,10 +3,19 @@
 import {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import NavDropdown from './NavDropdown'
+
 // import { useGSAP } from '@gsap/react';
 // import gsap from 'gsap';
 
 // gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+]
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,14 +77,14 @@ const Navbar = () => {
                 <g opacity="1" transform="matrix(1,0,0,1,12,12)">
                   <g opacity="1" transform="matrix(1,0,0,1,0,2.5)">
                     <path
-                      fill="#072e23"
+                      fill="#063644"
                       fillOpacity="1"
                       d="M7,-0.75 C7,-0.75 7,0.75 7,0.75 C7,0.75 -7,0.75 -7,0.75 C-7,0.75 -7,-0.75 -7,-0.75 C-7,-0.75 7,-0.75 7,-0.75z"
                     />
                   </g>
                   <g opacity="1" transform="matrix(1,0,0,1,0,-2.5)">
                     <path
-                      fill="#072e23"
+                      fill="#063644"
                       fillOpacity="1"
                       d="M7,-0.75 C7,-0.75 7,0.75 7,0.75 C7,0.75 -7,0.75 -7,0.75 C-7,0.75 -7,-0.75 -7,-0.75 C-7,-0.75 7,-0.75 7,-0.75z"
                     />
@@ -126,7 +135,7 @@ const Navbar = () => {
                   </g>
                   <g opacity="1" transform="matrix(1,0,0,1,0,-2.5)">
                     <path
-                      fill="#072e23"
+                      fill="#063644"
                       fillOpacity="1"
                       d="M7,-0.75 C7,-0.75 7,0.75 7,0.75 C7,0.75 -7,0.75 -7,0.75 C-7,0.75 -7,-0.75 -7,-0.75 C-7,-0.75 7,-0.75 7,-0.75z"
                     />
@@ -140,21 +149,15 @@ const Navbar = () => {
 
         {/* ✅ CTA button: Desktop only, right corner */}
         {/* Because it's a direct child of justify-between, it will naturally be on the right */}
-        <button className="hidden sm:block px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">
-          Contact Us
+        <button className="hidden sm:block group relative h-10 rounded-full border border-[var(--bg-color)]-200 bg-transparent px-4 text-neutral-950"><span className="relative inline-flex overflow-hidden">
+            <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-10">Book Now</div>
+            <div className="absolute translate-y-[110%] skew-y-10 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">Call Us</div></span>
         </button>
       </div>
 
       {/* Optional dropdown for mobile (remains the same) */}
       {isOpen && (
-        <div className="mt-4 sm:hidden bg-white py-4 shadow-lg">
-          <div className="flex flex-col items-center space-y-4">
-            <Link href="/about" className="text-gray-800 hover:text-blue-600 text-lg" onClick={toggleMenu}>About</Link>
-            <Link href="/services" className="text-gray-800 hover:text-blue-600 text-lg" onClick={toggleMenu}>Services</Link>
-            <Link href="/contact" className="text-gray-800 hover:text-blue-600 text-lg" onClick={toggleMenu}>Contact</Link>
-            <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200" onClick={toggleMenu}>Contact Us</button>
-          </div>
-        </div>
+        <NavDropdown links={navLinks} />
       )}
     </nav>
   );
