@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
  return (
-    <nav className="w-full px-3 py-2 sm:px-0 sm:py-0 bg-[var(--bg-color)] fixed top-0 left-0 z-50">
+    <nav className="w-full px-3 py-2 sm:px-24 sm:py-1 bg-transparent fixed top-0 left-0 z-10">
       {/* NAV CONTAINER */}
       {/* Use justify-between on the main container to spread items */}
       <div className="container mx-auto flex items-center justify-between">
@@ -56,9 +56,9 @@ const Navbar = () => {
           ) : (
              <svg
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
+              viewBox="0 0 30 30"
+              width="50"
+              height="50"
               preserveAspectRatio="xMidYMid meet"
               style={{
                 width: '100%',
@@ -69,7 +69,7 @@ const Navbar = () => {
               className="lottie-svg">
             <defs>
               <clipPath id="__lottie_element_48">
-                <rect width="24" height="24" x="0" y="0" />
+                <rect width="32" height="32" x="0" y="0" />
               </clipPath>
             </defs>
             <g clipPath="url(#__lottie_element_48)">
@@ -103,7 +103,7 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <Image src="/icons/cross.svg" alt="Close menu" width={24} height={24} />
+            <Image src="/icons/cross.svg" alt="Close menu" width={32} height={24} />
           ) : (
               <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -149,10 +149,17 @@ const Navbar = () => {
 
         {/* ✅ CTA button: Desktop only, right corner */}
         {/* Because it's a direct child of justify-between, it will naturally be on the right */}
-        <button className="hidden sm:block group relative h-10 rounded-full border border-[var(--bg-color)]-200 bg-transparent px-4 text-neutral-950"><span className="relative inline-flex overflow-hidden">
-            <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-10">Book Now</div>
-            <div className="absolute translate-y-[110%] skew-y-10 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">Call Us</div></span>
-        </button>
+            <button
+            className="hidden sm:block group relative h-10 rounded-full border px-5 text-[var(--dark-text)] bg-white/90 border-[var(--orange)] font-medium shadow-md backdrop-blur-md transition-all duration-300 hover:shadow-lg"
+          >
+            <span className="relative inline-flex overflow-hidden h-full items-center justify-center">
+              <div className="transition-transform duration-500 hover:outline-1 hover:outline-brand-orange">
+                Book Now
+              </div>
+              
+            </span>
+          </button>
+
       </div>
 
       {/* Optional dropdown for mobile (remains the same) */}
